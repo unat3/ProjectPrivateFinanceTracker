@@ -216,7 +216,7 @@ public class UserService {
     public void saveTransactions(Transactions transaction) throws SQLException{
         connection = DBManager.getConnection();
 
-        String query = "INSERT INTO financialGoalsCalculator (userId,amount,dateAndTimeOfTransaction,description,category) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO transactions (userId,amount,dateAndTimeOfTransaction,description,category) VALUES (?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         getInstance();
         preparedStatement.setInt(1, transaction.getUserId(getLoggedInUserId()));
