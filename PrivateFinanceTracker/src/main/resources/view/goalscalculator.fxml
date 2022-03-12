@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #E8FFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.GoalsCalculatorController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="280.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane layoutY="-19.0" prefHeight="719.0" prefWidth="280.0" style="-fx-background-color: #41AEA9;">
+                    <children>
+                        <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+                            <font>
+                                <Font name="Times New Roman" size="34.0" />
+                            </font>
+                        </Text>
+                        <Text fill="#213e3b" layoutX="26.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+                            <font>
+                                <Font name="Helvetica Neue" size="19.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="53.0" layoutY="328.0" mnemonicParsing="false" onAction="#goToViewMyGoals" style="-fx-background-color: #41AEA9;" text="View my existing goals" textFill="#213e3b">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <Text fill="#213e3b" layoutX="354.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Financial goals calculator">
+                    <font>
+                        <Font name="Helvetica Neue" size="24.0" />
+                    </font>
+                </Text>
+                <Button layoutX="405.0" layoutY="624.0" mnemonicParsing="false" onAction="#setBackToMainPageButton" style="-fx-background-color: #41AEA9;" text="Back to main page">
+                    <font>
+                        <Font name="Helvetica Neue" size="14.0" />
+                    </font>
+                </Button>
+                <Text fill="#213e3b" layoutX="289.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter goal name:">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="goalNameField" layoutX="412.0" layoutY="207.0" />
+                <Text fill="#213e3b" layoutX="289.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provide a small description about your goal (optional):">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextArea fx:id="goalDescriptionField" layoutX="299.0" layoutY="267.0" prefHeight="85.0" prefWidth="371.0" />
+                <Text fill="#213e3b" layoutX="289.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much needs to be saved to achieve the goal?">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="goalMoneyAmountField" layoutX="633.0" layoutY="367.0" prefHeight="25.0" prefWidth="43.0" />
+                <Text fill="#213e3b" layoutX="682.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <DatePicker fx:id="startDateField" layoutX="438.0" layoutY="402.0" />
+                <Text fill="#21413b" layoutX="289.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a start date:">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="288.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an end date:">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <DatePicker fx:id="endDateField" layoutX="437.0" layoutY="441.0" />
+                <Button layoutX="432.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleGoalCalculation" style="-fx-background-color: #41AEA9;" text="Calculate">
+                    <font>
+                        <Font name="Helvetica Neue" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

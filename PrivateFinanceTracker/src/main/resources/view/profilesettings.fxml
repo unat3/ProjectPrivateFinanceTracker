@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #E8FFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.ProfileSettingsController">
+   <center>
+      <AnchorPane prefHeight="700.0" prefWidth="543.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#213e3b" layoutX="111.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile information ">
+               <font>
+                  <Font name="Helvetica Neue" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="151.0" layoutY="661.0" mnemonicParsing="false" onAction="#backToMainPage" style="-fx-background-color: #41AEA9;" text="Back to main page" textFill="#213e3b" />
+            <Text fill="#213e3b" layoutX="202.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&amp;">
+               <font>
+                  <Font name="Helvetica Neue" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="166.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+               <font>
+                  <Font name="Helvetica Neue" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="67.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="48.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="41.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="81.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="27.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="61.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="29.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member since:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="nameLabel" layoutX="138.0" layoutY="165.0" text="Name">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastNameLabel" layoutX="137.0" layoutY="200.0" text="not provided">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateOfBirthLabel" layoutX="139.0" layoutY="232.0" text="not provided">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailLabel" layoutX="140.0" layoutY="264.0" text="email">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneNumberLabel" layoutX="138.0" layoutY="288.0" text="not provided">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="locationLabel" layoutX="137.0" layoutY="321.0" text="not provided">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memberSinceLabel" layoutX="135.0" layoutY="347.0" text="membersince">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Text fill="#213e3b" layoutX="16.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change email and/or password">
+               <font>
+                  <Font name="Helvetica Neue" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="17.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your new password:" />
+            <Text layoutX="23.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm new password:" />
+            <Text layoutX="41.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your new email:" />
+            <TextField fx:id="newEmailField" layoutX="182.0" layoutY="570.0" prefHeight="25.0" prefWidth="145.0" />
+            <Button layoutX="156.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleChangePassword" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Change password">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="163.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleChangeEmail" prefHeight="23.0" prefWidth="93.0" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Change email">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="151.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: #E8FFFF #E8FFFF;" text="Delete account" textFill="#c32b0b">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="newPasswordField" layoutX="163.0" layoutY="464.0" />
+            <PasswordField fx:id="confirmNewPasswordField" layoutX="163.0" layoutY="500.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane layoutY="-19.0" prefHeight="719.0" prefWidth="280.0" style="-fx-background-color: #41AEA9;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+               <font>
+                  <Font name="Times New Roman" size="34.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="26.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+               <font>
+                  <Font name="Helvetica Neue" size="19.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="89.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us:">
+               <font>
+                  <Font name="Helvetica Neue" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="54.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="support@manageit.com">
+               <font>
+                  <Font name="Helvetica Neue" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

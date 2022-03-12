@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.BudgetingController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="148.0" layoutY="641.0" mnemonicParsing="false" onAction="#backToMainPage" style="-fx-background-color: #41AEA9;" text="Back to main page" textFill="#213e3b">
+                    <font>
+                        <Font name="Helvetica Neue" size="13.0" />
+                    </font>
+                </Button>
+                <Text fill="#213e3b" layoutX="162.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budgeting">
+                    <font>
+                        <Font name="Helvetica Neue" size="21.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="18.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set a daily limit">
+                    <font>
+                        <Font name="Helvetica Neue" size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="65.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                <Text fill="#213e3b" layoutX="19.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What would be your perfect daily spendings limit to keep track of your" />
+                <Text fill="#213e3b" layoutX="19.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="budgeting goals? Enter amount below:" />
+                <TextField fx:id="dailyLimitField" layoutX="127.0" layoutY="241.0" />
+                <Button layoutX="189.0" layoutY="274.0" mnemonicParsing="false" onAction="#setDailyLimit" style="-fx-background-color: #41AEA9 #41AEA9;" text="Save" textFill="#213e3b" />
+                <Text fill="#213e3b" layoutX="20.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You will be able to keep track on how the limit changes on the" />
+                <Text fill="#213e3b" layoutX="20.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="main page as you input your spendings data." />
+                <Text fill="#213e3b" layoutX="18.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set a monthly budget for a spendings category">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="27.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the category:" />
+                <ChoiceBox fx:id="chooseCategoryForBudget" layoutX="158.0" layoutY="460.0" prefWidth="150.0" />
+                <Text fill="#213e3b" layoutX="27.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter monthly budget amount:" />
+                <TextField fx:id="budgetAmountField" layoutX="212.0" layoutY="505.0" prefHeight="25.0" prefWidth="93.0" />
+                <Button layoutX="189.0" layoutY="547.0" mnemonicParsing="false" onAction="#saveMonthlyBudget" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Save" textFill="#213e3b" />
+            <Text fill="#213e3b" layoutX="14.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you want to edit your daily limit, enter new amount here:" />
+            <TextField fx:id="newDailyLimit" layoutX="333.0" layoutY="357.0" prefHeight="25.0" prefWidth="73.0" />
+            <Button layoutX="189.0" layoutY="382.0" mnemonicParsing="false" onAction="#editDailyLimitAmount" style="-fx-background-color: #41AEA9 #41AEA9;" text="Save" textFill="#213e3b" />
+            </children>
+        </AnchorPane>
+    </center>
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #41AEA9;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+                    <font>
+                        <Font name="Times New Roman" size="34.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="26.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+                    <font>
+                        <Font name="Helvetica Neue" size="19.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="89.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="54.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="support@manageit.com">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </left>
+</BorderPane>

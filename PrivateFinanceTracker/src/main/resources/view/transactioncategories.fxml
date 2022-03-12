@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.TransactionCategoriesController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="192.0" layoutY="652.0" mnemonicParsing="false" onAction="#backToTransactionInput" style="-fx-background-color: #41AEA9;" text="Back" textFill="#213e3b">
+                    <font>
+                        <Font name="Helvetica Neue" size="13.0" />
+                    </font>
+                </Button>
+                <Text fill="#213e3b" layoutX="108.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction categories">
+                    <font>
+                        <Font name="Helvetica Neue" size="21.0" />
+                    </font>
+                </Text>
+                <Text layoutX="65.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                <Text fill="#213e3b" layoutX="18.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please choose the categories for your recently added transactions:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <TableView fx:id="tableView" layoutX="6.0" layoutY="178.0" prefHeight="344.0" prefWidth="428.0">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" prefWidth="60.112884521484375" text="date" />
+                        <TableColumn fx:id="currencyColumn" prefWidth="56.429718017578125" text="currency" />
+                        <TableColumn fx:id="priceColumn" prefWidth="45.13433837890625" text="price" />
+                        <TableColumn fx:id="purchaseColumn" prefWidth="170.9505615234375" text="purchase" />
+                        <TableColumn fx:id="categoryChooser" prefWidth="94.0494384765625" text="category" />
+                    </columns>
+                </TableView>
+                <Button layoutX="148.0" layoutY="546.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #41AEA9 #41AEA9;" text="Save and Done" textFill="#213e3b" />
+            </children>
+        </AnchorPane>
+    </center>
+    <left>
+        <AnchorPane prefHeight="700.0" prefWidth="260.0" style="-fx-background-color: #41AEA9;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+                    <font>
+                        <Font name="Times New Roman" size="34.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="18.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+                    <font>
+                        <Font name="Helvetica Neue" size="19.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="89.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="54.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="support@manageit.com">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </left>
+</BorderPane>

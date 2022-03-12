@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.RegisterController">
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #41AEA9#41AEA9;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+                    <font>
+                        <Font name="Times New Roman" size="34.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="26.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="89.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us:" wrappingWidth="85.26092529296875">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="54.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="support@manageit.com">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#213e00" layoutX="13.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new account">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <Text fill="#213e3b" layoutX="14.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="nameField" layoutX="14.0" layoutY="123.0" />
+                <TextField fx:id="lastNameField" layoutX="14.0" layoutY="175.0" />
+                <Text fill="#213e3b" layoutX="15.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth YYYY-MM-DD">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="dateOfBirthField" layoutX="14.0" layoutY="226.0" />
+                <Text fill="#213e3b" layoutX="15.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="emailField" layoutX="14.0" layoutY="277.0" />
+                <Text fill="#213e3b" layoutX="14.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="phoneField" layoutX="14.0" layoutY="327.0" />
+                <Text fill="#213e3b" layoutX="14.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+                    <font>
+                        <Font name="Helvetica Neue" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="locationField" layoutX="13.0" layoutY="379.0" />
+                <Text fill="#213e3b" layoutX="13.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+                <PasswordField fx:id="passwordField" layoutX="14.0" layoutY="427.0" />
+                <Text fill="#213e3b" layoutX="13.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+                    <font>
+                        <Font name="Helvetica Neue" size="15.0" />
+                    </font>
+                </Text>
+                <PasswordField fx:id="confirmPasswordField" layoutX="14.0" layoutY="477.0" />
+                <Text fill="#213e3b" layoutX="180.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must contain 8-20 characters," />
+                <Text fill="#213e3b" layoutX="180.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="at least one number, one symbol and  " />
+                <Button layoutX="154.0" layoutY="538.0" mnemonicParsing="false" onAction="#newAccountRegistration" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #41AEA9#41AEA9;" text="Create Account" textFill="#213e3b" />
+                <Text fill="#213e3b" layoutX="144.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already got an account?" />
+                <Button layoutX="185.0" layoutY="632.0" mnemonicParsing="false" onAction="#backToLogin" style="-fx-background-color: #41AEA9#41AEA9 #41AEA9#41AEA9;" text="Login" textFill="#213e3b" />
+            <Text fill="#213e3b" layoutX="180.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="uppercase character" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

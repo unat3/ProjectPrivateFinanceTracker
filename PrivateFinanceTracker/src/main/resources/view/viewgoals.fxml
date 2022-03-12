@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #E8FFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.ViewExistingGoalsController">
+   <center>
+      <AnchorPane prefHeight="700.0" prefWidth="543.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#213e3b" layoutX="122.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My financial goals">
+               <font>
+                  <Font name="Helvetica Neue" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="155.0" layoutY="649.0" mnemonicParsing="false" onAction="#backToCalculator" style="-fx-background-color: #41AEA9 #41AEA9;" text="Back to calculator" textFill="#213e3b" />
+            <Text fill="#213e3b" layoutX="81.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal:">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="51.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="55.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="53.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progress:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="67.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="goalNameLabel" layoutX="132.0" layoutY="130.0" text="Name">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="descriptionLabel" layoutX="81.0" layoutY="149.0" text="description not provided">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="startDateLabel" layoutX="126.0" layoutY="206.0" text="start date">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="endDateLabel" layoutX="128.0" layoutY="238.0" text="end date">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="progressLabel" layoutX="124.0" layoutY="269.0" text="IN PROGRESS">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="handleDeleteGoal" layoutX="303.0" layoutY="336.0" mnemonicParsing="false" style="-fx-background-color: #E8FFFF #E8FFFF;" text="Delete goal" textFill="#c32b0b">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="percentLabel" layoutX="267.0" layoutY="301.0" text="PercentLabel" />
+            <Button fx:id="updateProgressButton" layoutX="163.0" layoutY="393.0" mnemonicParsing="false" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Update progress" />
+            <Label fx:id="howMuchSavedLabel" layoutX="127.0" layoutY="301.0" text="HowMuchSavedLabel" />
+            <Text fill="#213e3b" layoutX="24.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter amount to update your progress below:" />
+            <TextField fx:id="updateSavedAmount" layoutX="77.0" layoutY="393.0" prefHeight="25.0" prefWidth="74.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane layoutY="-19.0" prefHeight="719.0" prefWidth="280.0" style="-fx-background-color: #41AEA9;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#213e3b" layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManageIt">
+               <font>
+                  <Font name="Times New Roman" size="34.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="26.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your private finance tracker">
+               <font>
+                  <Font name="Helvetica Neue" size="19.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="89.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us:">
+               <font>
+                  <Font name="Helvetica Neue" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#213e3b" layoutX="54.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="support@manageit.com">
+               <font>
+                  <Font name="Helvetica Neue" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
