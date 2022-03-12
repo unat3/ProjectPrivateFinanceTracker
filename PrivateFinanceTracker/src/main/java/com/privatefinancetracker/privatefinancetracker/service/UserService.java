@@ -226,7 +226,10 @@ public class UserService {
         preparedStatement.execute();
         preparedStatement.close();
     }
-    public void populateTableFromDB(int userID,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
+
+
+    //I see, do I just paste ResultSet to my query execution?
+    public ResultSet populateTableFromDB(int userID,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
         connection = DBManager.getConnection();
         String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId = ? and category = ? and dateAndTimeOfTransaction BETWEEN ? and ?";
 
@@ -241,9 +244,9 @@ public class UserService {
         preparedStatement.setDate(3, Date.valueOf(dateFrom));
         preparedStatement.setDate(4, Date.valueOf(dateTo));
 
+        ResultSet rs = preparedStatement.executeQuery(query);
 
-
-
+        return rs;
     }
 }
 

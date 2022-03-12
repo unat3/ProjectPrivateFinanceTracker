@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+//this is the controller
 public class ReportsController extends ViewController implements Initializable {
 
     //table variables
@@ -74,12 +74,8 @@ public class ReportsController extends ViewController implements Initializable {
 
         UserService userService = new UserService();
         int userID = DataManager.getLoggedInUserId();
-        userService.populateTableFromDB(userID,category,dateFrom,dateTo);
+        System.out.println(userService.populateTableFromDB(userID,category,dateFrom,dateTo));
 
-
-
-        //now need to make a query for database to get out the dates
-        //if (dbDate.equals(dateToPicker)){}
     }
 
 }
