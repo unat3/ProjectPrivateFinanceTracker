@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.MainPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.MainPageController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
             <children>
@@ -83,7 +83,7 @@
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="83.0" layoutY="372.0" mnemonicParsing="false" style="-fx-background-color: #41AEA9#41AEA9;" text="View reports" textFill="#213e3b">
+                <Button layoutX="83.0" layoutY="372.0" mnemonicParsing="false" onAction="#goToReportsView" style="-fx-background-color: #41AEA9#41AEA9;" text="View reports" textFill="#213e3b">
                     <font>
                         <Font name="Helvetica Neue" size="14.0" />
                     </font>

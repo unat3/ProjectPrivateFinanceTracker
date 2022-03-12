@@ -74,6 +74,13 @@ public class MainPageController extends ViewController implements Initializable 
             ex.printStackTrace();
         }
     }
+    public void goToReportsView(ActionEvent actionEvent){
+        try {
+            changeScene(actionEvent, "reports");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
 
     public void addWelcomeName(){

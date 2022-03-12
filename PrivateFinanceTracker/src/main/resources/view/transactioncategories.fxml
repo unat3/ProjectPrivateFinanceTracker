@@ -8,7 +8,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="192.0" layoutY="652.0" mnemonicParsing="false" onAction="#backToTransactionInput" style="-fx-background-color: #41AEA9;" text="Back" textFill="#213e3b">
+                <Button layoutX="148.0" layoutY="647.0" mnemonicParsing="false" onAction="#backToTransactionInput" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: #41AEA9;" text="Back to input " textFill="#213e3b">
                     <font>
                         <Font name="Helvetica Neue" size="13.0" />
                     </font>
@@ -34,6 +34,7 @@
                     </columns>
                 </TableView>
                 <Button layoutX="148.0" layoutY="546.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #41AEA9 #41AEA9;" text="Save and Done" textFill="#213e3b" />
+            <Button layoutX="148.0" layoutY="597.0" mnemonicParsing="false" onAction="#backToMainPage" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #41AEA9 #41AEA9;" text="Back to main page" textFill="#213e3b" />
             </children>
         </AnchorPane>
     </center>

@@ -43,20 +43,6 @@ public class TransactionInputController extends ViewController implements Initia
     private ChoiceBox currencyInput;
     String transactionInputFilePath;
 
-// For the transaction categories view
-
-    @FXML
-    private TableColumn<TransactionsForTable, String> dateColumn;
-    @FXML
-    private TableColumn<TransactionsForTable, String> currencyColumn;
-    @FXML
-    private TableColumn<TransactionsForTable, Double> priceColumn;
-    @FXML
-    private TableColumn<TransactionsForTable, String> purchaseColumn;
-    @FXML
-    private TableColumn<TransactionsForTable, ComboBox> categoryChooser;
-
-
     TransactionsForTableList  transList = new TransactionsForTableList();
     DBManager databaseManager;
     Connection conn;
@@ -64,9 +50,6 @@ public class TransactionInputController extends ViewController implements Initia
 
     @FXML
     private TableView<TransactionsForTable> tableView;
-
-
-
 
 
     public TransactionInputController() {
@@ -147,7 +130,7 @@ public class TransactionInputController extends ViewController implements Initia
                         continue;
                     }
                     String[] transactionData = line.split(splitBy);
-                    //System.out.println("Date of payment: " + transactionData[1] + ", Currency: " + transactionData[2] + ", Sum: " + transactionData[3] + " Name: " + transactionData[4]);
+                    System.out.println("Date of payment: " + transactionData[1] + ", Currency: " + transactionData[2] + ", Sum: " + transactionData[3] + " Name: " + transactionData[4]);
                     String date = transactionData[1];
                     String currency = transactionData[2];
                     double price = Double.parseDouble(transactionData[3]);
@@ -155,6 +138,7 @@ public class TransactionInputController extends ViewController implements Initia
                     TransactionsForTable transaction = new TransactionsForTable(date, currency, price, purchase, categoriesList);
                     transList.addTransactionsForTable(transaction);
                     DataManager.setTransList(transList);
+                    System.out.println(transList.toString());
 
 
                 }

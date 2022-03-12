@@ -7,10 +7,8 @@ import com.privatefinancetracker.privatefinancetracker.model.User;
 import com.privatefinancetracker.privatefinancetracker.repository.DBManager;
 import com.privatefinancetracker.privatefinancetracker.repository.DataManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
 import static com.privatefinancetracker.privatefinancetracker.repository.DataManager.*;
 
@@ -227,6 +225,25 @@ public class UserService {
 
         preparedStatement.execute();
         preparedStatement.close();
+    }
+    public void populateTableFromDB(int userID,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
+        connection = DBManager.getConnection();
+        String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId = ? and category = ? and dateAndTimeOfTransaction BETWEEN ? and ?";
+
+//amount double NOT NULL,
+// dateAndTimeOfTransaction datetime NOT NULL,
+// description text NOT NULL,
+// category varchar(45) NOT NULL,
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, userID);
+        preparedStatement.setString(2, category);
+        preparedStatement.setDate(3, Date.valueOf(dateFrom));
+        preparedStatement.setDate(4, Date.valueOf(dateTo));
+
+
+
+
     }
 }
 

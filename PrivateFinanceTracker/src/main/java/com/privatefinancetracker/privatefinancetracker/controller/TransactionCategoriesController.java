@@ -85,4 +85,11 @@ public class TransactionCategoriesController extends ViewController implements I
             ex.printStackTrace();
         }
     }
+    public void backToMainPage(ActionEvent actionEvent){
+        try {
+            changeScene(actionEvent, "mainpage");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
