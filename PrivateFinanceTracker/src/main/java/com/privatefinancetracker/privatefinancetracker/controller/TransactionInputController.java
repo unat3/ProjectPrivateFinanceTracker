@@ -140,7 +140,6 @@ public class TransactionInputController extends ViewController implements Initia
                     DataManager.setTransList(transList);
                     System.out.println(transList.toString());
 
-
                 }
             }
 
