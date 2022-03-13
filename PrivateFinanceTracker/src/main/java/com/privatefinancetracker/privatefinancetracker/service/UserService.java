@@ -249,5 +249,25 @@ public class UserService {
 
         return rs;
     }
+    public ResultSet populatePieChartFromDB(int userId,LocalDate dateFrom, LocalDate dateTo) throws Exception {
+        connection = DBManager.getConnection();
+
+        System.out.println("User ID:  " + userId);
+        String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId =? and dateAndTimeOfTransaction BETWEEN ? and ?;";
+        //String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE category =?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        //preparedStatement.setString(1,category);
+
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setDate(2, Date.valueOf(dateFrom));
+        preparedStatement.setDate(3, Date.valueOf(dateTo));
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        // ResultSet rs = query;
+
+        return rs;
+    }
 }
 
