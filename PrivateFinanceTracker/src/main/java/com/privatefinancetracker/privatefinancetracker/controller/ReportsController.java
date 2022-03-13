@@ -3,6 +3,7 @@ package com.privatefinancetracker.privatefinancetracker.controller;
 import com.privatefinancetracker.privatefinancetracker.model.Category;
 import com.privatefinancetracker.privatefinancetracker.model.ReportsData;
 import com.privatefinancetracker.privatefinancetracker.model.TransactionsForTable;
+import com.privatefinancetracker.privatefinancetracker.model.TransactionsForTableList;
 import com.privatefinancetracker.privatefinancetracker.repository.DBManager;
 import com.privatefinancetracker.privatefinancetracker.repository.DataManager;
 import com.privatefinancetracker.privatefinancetracker.service.UserService;
@@ -46,6 +47,7 @@ public class ReportsController extends ViewController implements Initializable {
     private TextArea spentSumText;
     @FXML
     private ChoiceBox<String> categoryPicker;
+    TransactionsForTableList reportsDataList = new TransactionsForTableList();
 
 
     //Database connection
@@ -71,14 +73,12 @@ public class ReportsController extends ViewController implements Initializable {
         categoryPicker.getItems().add("Earnings");
         categoryPicker.getItems().add("Unsorted");
 
-        ObservableList<ReportsData> reportsDataList;
+
         if (dateCol != null) {
             dateCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("date"));
-            priceCol.setCellValueFactory(new PropertyValueFactory<ReportsData, Double>("currency"));
-            purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("price"));
-            categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
-            reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
-
+            priceCol.setCellValueFactory(new PropertyValueFactory<ReportsData, Double>("price"));
+            purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
+            categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("category"));
         }
     }
     public void goButtonPressed() throws Exception {
@@ -91,41 +91,24 @@ public class ReportsController extends ViewController implements Initializable {
         int userID = DataManager.getLoggedInUserId();
         System.out.println(userService.populateTableFromDB(userID,category,dateFrom,dateTo));
 
-        if (dateCol != null) {
-            dateCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("date"));
-            priceCol.setCellValueFactory(new PropertyValueFactory<ReportsData, Double>("currency"));
-            purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("price"));
-            categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
-
-
             ResultSet resultSet = userService.populateTableFromDB(userID,category,dateFrom,dateTo);
             System.out.println("I have results from DB: " + resultSet);
 
-            while (true){
-                try {
-                    if (!resultSet.next()) break;
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                ReportsData listData = null;
-                try {
-                    listData = new ReportsData(resultSet.getDouble("amount"), resultSet.getDate("dateAndTimeOfTransaction"), resultSet.getString("description"), resultSet.getString("category"));
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                DataManager.getReportsDataList().addDataForTable(listData);
-
+            while (resultSet.next()) {
+                System.out.println("I am here in the while loop now");
+                 reportsDataList.addDataForTable(new ReportsData(resultSet.getDouble("amount"), resultSet.getDate("dateAndTimeOfTransaction"), resultSet.getString("description"), resultSet.getString("category")));
+                System.out.println("I have added something to the list");
             }
+        System.out.println("I am here outside the while loop now");
 
+            DataManager.setReportsDataList(reportsDataList);
             System.out.println("I have saved the list" + DataManager.getReportsDataList().getDataForTable());
-
             reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
-            // tableView.setItems(DataManager.getTransList().getAllTransactionForTable());
+           // reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
         }
 
     }
 
-}
 //reportsTable - tabula
 //categoryPicker - kategoriju izvelne
 //dateFromPicker - datuma no izvelne // onAction - dateFromPicked

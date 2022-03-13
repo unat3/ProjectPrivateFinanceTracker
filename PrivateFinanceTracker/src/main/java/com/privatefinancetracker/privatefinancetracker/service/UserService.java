@@ -244,7 +244,6 @@ public class UserService {
         preparedStatement.setDate(4, Date.valueOf(dateTo));
 
         ResultSet rs = preparedStatement.executeQuery();
-        preparedStatement.close();
 
        // ResultSet rs = query;
 

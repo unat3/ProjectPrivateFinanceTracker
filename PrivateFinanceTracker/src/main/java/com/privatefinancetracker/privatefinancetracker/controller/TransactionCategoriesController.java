@@ -41,6 +41,7 @@ public class TransactionCategoriesController extends ViewController implements I
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if (dateColumn != null) {
             dateColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("date"));
             currencyColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("currency"));
