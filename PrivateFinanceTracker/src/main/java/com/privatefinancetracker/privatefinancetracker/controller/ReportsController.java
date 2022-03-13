@@ -7,6 +7,7 @@ import com.privatefinancetracker.privatefinancetracker.model.TransactionsForTabl
 import com.privatefinancetracker.privatefinancetracker.repository.DBManager;
 import com.privatefinancetracker.privatefinancetracker.repository.DataManager;
 import com.privatefinancetracker.privatefinancetracker.service.UserService;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,6 +49,8 @@ public class ReportsController extends ViewController implements Initializable {
     @FXML
     private ChoiceBox<String> categoryPicker;
     TransactionsForTableList reportsDataList = new TransactionsForTableList();
+    @FXML
+    PieChart pieChart;
     double sum = 0;
 
 
@@ -81,7 +84,26 @@ public class ReportsController extends ViewController implements Initializable {
             purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("category"));
         }
+
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Food", 2),
+                        new PieChart.Data("Housing", 25),
+                        new PieChart.Data("Transport", 50),
+                        new PieChart.Data("Savings", 3));
+
+
+        pieChartData.forEach(data ->
+                data.nameProperty().bind(
+                        Bindings.concat(
+                                data.getName(), " amount: ", data.pieValueProperty()
+                        )
+                )
+        );
+
+        pieChart.getData().addAll(pieChartData);
     }
+
     public void goButtonPressed() throws Exception {
        LocalDate dateFrom = dateFromPicker.getValue();
        LocalDate dateTo = dateToPicker.getValue();
