@@ -48,6 +48,7 @@ public class ReportsController extends ViewController implements Initializable {
     @FXML
     private ChoiceBox<String> categoryPicker;
     TransactionsForTableList reportsDataList = new TransactionsForTableList();
+    double sum = 0;
 
 
     //Database connection
@@ -104,10 +105,23 @@ public class ReportsController extends ViewController implements Initializable {
             DataManager.setReportsDataList(reportsDataList);
             System.out.println("I have saved the list" + DataManager.getReportsDataList().getDataForTable());
             reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
+            int length = DataManager.getReportsDataList().getDataForTable().size();
+            int index = 0;
+            double sum = 0;
+            while (index < length){
+                double tempSum = DataManager.getReportsDataList().getDataForTable().get(index).getPrice();
+                sum = sum + tempSum;
+                index ++;
+
+            }
+            spentSumText.setText("Total spendings/earnings between " + dateFrom + " and " + dateTo + " in category " + category + " : " + sum + "eur");
+        System.out.println(sum);
+
+        }
            // reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
         }
 
-    }
+
 
 //reportsTable - tabula
 //categoryPicker - kategoriju izvelne
