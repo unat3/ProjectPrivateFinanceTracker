@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #E8FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.ReportsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #E8FFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.privatefinancetracker.privatefinancetracker.controller.ReportsController">
     <center>
         <AnchorPane prefHeight="700.0" prefWidth="543.0" style="-fx-background-color: #E8FFFF;" BorderPane.alignment="CENTER">
             <children>
@@ -21,7 +13,7 @@
                         <Font name="Helvetica Neue" size="24.0" />
                     </font>
                 </Text>
-                <Button layoutX="155.0" layoutY="649.0" mnemonicParsing="false" style="-fx-background-color: #41AEA9 #41AEA9;" text="Back to main page" textFill="#213e3b" />
+                <Button layoutX="155.0" layoutY="649.0" mnemonicParsing="false" onAction="#backToMainPage" style="-fx-background-color: #41AEA9 #41AEA9;" text="Back to main page" textFill="#213e3b" />
                 <Text fill="#213e3b" layoutX="24.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can see your spendings by category:" />
                 <Text fill="#213e3b" layoutX="19.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date from:" />
                 <Text fill="#213e3b" layoutX="34.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date to:" />
@@ -31,12 +23,12 @@
                 <Text fill="#213e3b" layoutX="29.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
                 <Button layoutX="132.0" layoutY="248.0" mnemonicParsing="false" onAction="#goButtonPressed" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Go" />
                 <TextArea fx:id="spentSumText" layoutX="19.0" layoutY="295.0" prefHeight="38.0" prefWidth="243.0" promptText="Spent sum in category" />
-                <TableView layoutX="6.0" layoutY="347.0" prefHeight="267.0" prefWidth="412.0">
+                <TableView fx:id="reportsTable" layoutX="6.0" layoutY="347.0" prefHeight="267.0" prefWidth="412.0">
                     <columns>
-                        <TableColumn prefWidth="66.15447998046875" text="Date" />
-                        <TableColumn prefWidth="70.731689453125" text="Price" />
-                        <TableColumn prefWidth="182.26824951171875" text="Purchase" />
-                        <TableColumn prefWidth="92.0159912109375" text="Category" />
+                        <TableColumn fx:id="dateCol" prefWidth="66.15447998046875" text="Date" />
+                        <TableColumn fx:id="priceCol" prefWidth="70.731689453125" text="Price" />
+                        <TableColumn fx:id="purchaseCol" prefWidth="182.26824951171875" text="Purchase" />
+                        <TableColumn fx:id="categoryCol" prefWidth="92.0159912109375" text="Category" />
                     </columns>
                 </TableView>
             </children>

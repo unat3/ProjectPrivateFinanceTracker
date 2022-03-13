@@ -10,6 +10,7 @@ import com.privatefinancetracker.privatefinancetracker.service.UserService;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
@@ -84,8 +85,8 @@ public class ReportsController extends ViewController implements Initializable {
             purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("category"));
         }
-
-        ObservableList<PieChart.Data> pieChartData =
+//pieChart
+       /* ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
                         new PieChart.Data("Food", 2),
                         new PieChart.Data("Housing", 25),
@@ -102,8 +103,8 @@ public class ReportsController extends ViewController implements Initializable {
         );
 
         pieChart.getData().addAll(pieChartData);
+    */
     }
-
     public void goButtonPressed() throws Exception {
        LocalDate dateFrom = dateFromPicker.getValue();
        LocalDate dateTo = dateToPicker.getValue();
@@ -140,8 +141,16 @@ public class ReportsController extends ViewController implements Initializable {
         System.out.println(sum);
 
         }
-           // reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
+    public void backToMainPage(ActionEvent actionEvent){
+        try {
+            changeScene(actionEvent, "mainpage");
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+    }
+}
+           // reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
+
 
 
 
