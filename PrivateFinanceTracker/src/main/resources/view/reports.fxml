@@ -22,7 +22,7 @@
                 <ChoiceBox fx:id="categoryPicker" layoutX="89.0" layoutY="210.0" prefHeight="25.0" prefWidth="120.0" />
                 <Text fill="#213e3b" layoutX="29.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
                 <Button layoutX="132.0" layoutY="248.0" mnemonicParsing="false" onAction="#goButtonPressed" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Go" />
-                <TextArea fx:id="spentSumText" layoutX="19.0" layoutY="295.0" prefHeight="38.0" prefWidth="243.0" promptText="Spent sum in category" />
+                <TextArea fx:id="spentSumText" layoutX="19.0" layoutY="295.0" prefHeight="38.0" prefWidth="396.0" promptText="Spent sum in category" />
                 <TableView fx:id="reportsTable" layoutX="6.0" layoutY="347.0" prefHeight="267.0" prefWidth="412.0">
                     <columns>
                         <TableColumn fx:id="dateCol" prefWidth="66.15447998046875" text="Date" />
