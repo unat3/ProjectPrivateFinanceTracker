@@ -228,23 +228,25 @@ public class UserService {
     }
 
 
-    //I see, do I just paste ResultSet to my query execution?
-    public ResultSet populateTableFromDB(int userID,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
+    public ResultSet populateTableFromDB(int userId,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
         connection = DBManager.getConnection();
-        String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId = ? and category = ? and dateAndTimeOfTransaction BETWEEN ? and ?";
 
-//amount double NOT NULL,
-// dateAndTimeOfTransaction datetime NOT NULL,
-// description text NOT NULL,
-// category varchar(45) NOT NULL,
+        System.out.println("User ID:  " + userId);
+        String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId =? and category =? and dateAndTimeOfTransaction BETWEEN ? and ?;";
+        //String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE category =?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setInt(1, userID);
+        //preparedStatement.setString(1,category);
+
+        preparedStatement.setInt(1, userId);
         preparedStatement.setString(2, category);
         preparedStatement.setDate(3, Date.valueOf(dateFrom));
         preparedStatement.setDate(4, Date.valueOf(dateTo));
 
-        ResultSet rs = preparedStatement.executeQuery(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        preparedStatement.close();
+
+       // ResultSet rs = query;
 
         return rs;
     }
