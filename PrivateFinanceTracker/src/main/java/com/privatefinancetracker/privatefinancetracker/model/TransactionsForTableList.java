@@ -5,22 +5,32 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class TransactionsForTableList {
-        private ObservableList<TransactionsForTable> allTransactionsForTable;
+    private ObservableList<TransactionsForTable> allTransactionsForTable;
+    private ObservableList<ReportsData> reportsDataList;
 
-        public TransactionsForTableList(){
-            allTransactionsForTable = FXCollections.observableArrayList();
-        }
+    public TransactionsForTableList() {
+        allTransactionsForTable = FXCollections.observableArrayList();
+        reportsDataList = FXCollections.observableArrayList();
+    }
 
-        public void addTransactionsForTable(TransactionsForTable newTransactionForTable){
-            this.allTransactionsForTable.add(newTransactionForTable);
-        }
+    public void addTransactionsForTable(TransactionsForTable newTransactionForTable) {
+        this.allTransactionsForTable.add(newTransactionForTable);
+    }
 
-        public ObservableList<TransactionsForTable> getAllTransactionForTable(){
+    public void addDataForTable(ReportsData newDataforTable) {
+        this.reportsDataList.add(newDataforTable);
+    }
+
+    public ObservableList<TransactionsForTable> getAllTransactionForTable() {
         return allTransactionsForTable;
     }
 
+    public ObservableList<ReportsData> getDataForTable() {
+        return reportsDataList;
+    }
 
-        //methods to look for/update/delete transactions in case we want to add these possibilities (for now unused):
+
+    //methods to look for/update/delete transactions in case we want to add these possibilities (for now unused):
     /*
         public TransactionsForTable lookupTransactionForTable(int TransactionForTableId){
             for(int i = 0; i < this.allTransactionsForTable.size(); i++){
@@ -48,4 +58,4 @@ public class TransactionsForTableList {
 
 */
 
-    }
+}
