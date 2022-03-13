@@ -29,9 +29,9 @@
                 <Text fill="#213e3b" layoutX="50.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
                 <Text fill="#213e3b" layoutX="27.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase:" />
                 <TextField fx:id="purchaseInput" layoutX="102.0" layoutY="448.0" prefHeight="25.0" prefWidth="162.0" />
-                <Label fx:id="filePathLabel" layoutX="22.0" layoutY="198.0" text="Chosen file path" />
-                <Button fx:id="BrowseForFile" layoutX="20.0" layoutY="221.0" mnemonicParsing="false" onAction="#BrowseForFileClick" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Browse for file" textFill="#213e3b" />
-                <Button layoutX="21.0" layoutY="267.0" mnemonicParsing="false" onAction="#doneButtonPressed" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Done" />
+                <Label fx:id="filePathLabel" layoutX="18.0" layoutY="197.0" prefHeight="43.0" prefWidth="376.0" text="Chosen file path" wrapText="true" />
+                <Button fx:id="BrowseForFile" layoutX="19.0" layoutY="241.0" mnemonicParsing="false" onAction="#BrowseForFileClick" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Browse for file" textFill="#213e3b" wrapText="true" />
+                <Button layoutX="20.0" layoutY="281.0" mnemonicParsing="false" onAction="#doneButtonPressed" style="-fx-background-color: #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9 #41AEA9;" text="Done" />
                 <DatePicker fx:id="dateInput" layoutX="101.0" layoutY="410.0" />
                 <Text fill="#213e3b" layoutX="51.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
                 <Text fill="#213e3b" layoutX="27.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currency:" />

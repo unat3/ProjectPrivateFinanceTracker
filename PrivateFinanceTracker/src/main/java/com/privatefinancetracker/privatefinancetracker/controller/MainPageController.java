@@ -119,4 +119,5 @@ public class MainPageController extends ViewController implements Initializable 
     public void setWelcomeLabel(Label welcomeLabel) {
         this.welcomeLabel = welcomeLabel;
     }
+
 }

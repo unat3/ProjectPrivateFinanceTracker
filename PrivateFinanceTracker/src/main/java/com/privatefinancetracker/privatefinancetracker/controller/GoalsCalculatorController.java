@@ -11,6 +11,7 @@ import javafx.scene.layout.Region;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -87,11 +88,13 @@ public class GoalsCalculatorController extends ViewController implements Initial
       long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
       double amountToSavePerMonth;
       amountToSavePerMonth = goalAmount / (daysBetween / 30.0);
-
-
+      amountToSavePerMonth = withTwoDecimalPlaces(amountToSavePerMonth);
         return amountToSavePerMonth;
     }
-
+    public static double withTwoDecimalPlaces(double value) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return new Double(df.format(value));
+    }
    /* public void showMonthlyGoalCalculation(){
 
         showAlert(null, "In order to save for " + goalNameField.getText() + " until "+
