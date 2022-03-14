@@ -12,11 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ViewExistingGoalsController extends ViewController implements Initializable {
     UserService userService = new UserService();
-    public TextField goalToDelete;
     public Label goalNameLabel;
     public Label descriptionLabel;
     public Label startDateLabel;
@@ -34,14 +34,20 @@ public class ViewExistingGoalsController extends ViewController implements Initi
         Goal goal = null;
         try {
             goal = this.userService.getUserGoal(userId);
+            goalNameLabel.setText(goal.getName());
+            descriptionLabel.setText(goal.getDescription());
+            startDateLabel.setText(goal.getStartDate().toString());
+            endDateLabel.setText(goal.getEndDate().toString());
+            addAmountSavedText();
+            addPercentLabelText();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        goalNameLabel.setText(goal.getName());
+      /*  goalNameLabel.setText(goal.getName());
         descriptionLabel.setText(goal.getDescription());
         startDateLabel.setText(goal.getStartDate().toString());
         endDateLabel.setText(goal.getEndDate().toString());
-        howMuchSavedLabel.setText(goal.getAmountSaved());
+        howMuchSavedLabel.setText(goal.getAmountSaved()); */
 
     }
 
@@ -69,6 +75,49 @@ public class ViewExistingGoalsController extends ViewController implements Initi
             }
         } else {
             alert.close();
+        }
+
+    }
+
+    public void addAmountSavedText(){
+        Integer userId = DataManager.getInstance().getLoggedInUserId();
+        double amountSaved = 0;
+        double amountToSave = 0;
+
+        try {
+            amountSaved = userService.getGoalAmountSavedById(userId);
+            amountToSave = userService.getGoalAmountToSaveById(userId);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        howMuchSavedLabel.setText(amountSaved + " / " + amountToSave + "€");
+    }
+
+    public void addPercentLabelText(){
+        Integer userId = DataManager.getInstance().getLoggedInUserId();
+        double amountSaved = 0;
+        double amountToSave = 0;
+        double percentage = 0;
+
+        try {
+            amountSaved = userService.getGoalAmountSavedById(userId);
+            amountToSave = userService.getGoalAmountToSaveById(userId);
+            percentage = GoalsCalculatorController.withTwoDecimalPlaces((amountSaved*100)/amountToSave);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        percentLabel.setText(percentage + "%");
+    }
+
+    public void handleUpdateGoalProgress() throws Exception {
+        Integer userId = DataManager.getInstance().getLoggedInUserId();
+        double updatedAmount = userService.getGoalAmountSavedById(userId) + Double.parseDouble(updateSavedAmount.getText());
+        System.out.println(updatedAmount);
+        try {
+            this.userService.updateGoalProgress(userId, updatedAmount);
+            showAlert(null, "Goal progress updated successfully!", Alert.AlertType.INFORMATION);
+        } catch (Exception ex) {
+            showAlert(null, "An error occurred, please try again", Alert.AlertType.ERROR);
         }
 
     }

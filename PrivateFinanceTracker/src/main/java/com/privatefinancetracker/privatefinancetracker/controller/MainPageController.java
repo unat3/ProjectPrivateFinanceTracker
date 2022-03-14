@@ -15,12 +15,14 @@ public class MainPageController extends ViewController implements Initializable 
     UserService userService = new UserService();
     public Label welcomeLabel;
     public Label dailyLimitLabel;
+    public Label howManyGoalsLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             addWelcomeName();
             setDailyLimitLabel();
+            addGoalsInProgress();
         }catch (Exception exception){
             showAlert("Alert", exception.getMessage(), Alert.AlertType.ERROR);
             exception.printStackTrace();
@@ -93,6 +95,22 @@ public class MainPageController extends ViewController implements Initializable 
             exception.printStackTrace();
         }
         getWelcomeLabel().setText("Hi, " + name);
+    }
+
+    public void addGoalsInProgress(){
+        Integer userId = DataManager.getInstance().getLoggedInUserId();
+        int goalInProgress = 0;
+
+        try {
+            goalInProgress = userService.findHowManyGoalsById(userId);
+            if (goalInProgress == 1){
+                howManyGoalsLabel.setText(goalInProgress + " GOAL");
+            } else {
+                howManyGoalsLabel.setText(goalInProgress + " GOALS");
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void setDailyLimitLabel(){

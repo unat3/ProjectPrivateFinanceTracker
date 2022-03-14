@@ -148,6 +148,72 @@ public class UserService {
         preparedStatement.close();
     }
 
+    public double getGoalAmountSavedById(int userId) throws Exception {
+        connection = DBManager.getConnection();
+        String query = "SELECT amountSaved FROM financialGoalsCalculator WHERE userId = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, userId);
+
+        double amountSaved = 0;
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) amountSaved = resultSet.getDouble("amountSaved");
+        DBManager.close(resultSet, preparedStatement, connection);
+        //if (double ==) throw new Exception("No goals found for user with this id");
+        return amountSaved;
+    }
+
+    public double getGoalAmountToSaveById(Integer userId) throws Exception {
+        connection = DBManager.getConnection();
+        String query = "SELECT amountToSave FROM financialGoalsCalculator WHERE userId = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, userId);
+
+        double amountToSave = 0;
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) amountToSave = resultSet.getDouble("amountToSave");
+        DBManager.close(resultSet, preparedStatement, connection);
+        //if (double ==) throw new Exception("No goals found for user with this id");
+        return amountToSave;
+
+    }
+
+    public void updateGoalProgress(int userId, double updatedAmount) throws Exception{
+        connection = DBManager.getConnection();
+
+        String query = "UPDATE financialGoalsCalculator SET amountSaved = ? WHERE userId = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setDouble(1, updatedAmount);
+        preparedStatement.setInt(2, userId);
+
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
+    }
+
+    public int findHowManyGoalsById(int userId) throws Exception {
+        connection = DBManager.getConnection();
+        String query = "SELECT COUNT(goalId) FROM financialGoalsCalculator WHERE userId = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, userId);
+
+        int goalsInProgress = 0;
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) goalsInProgress = resultSet.getInt("COUNT(goalId)");
+
+      /*  if (resultSet.equals(1)){
+            goalsInProgress = 1;
+        } else {
+            goalsInProgress = 0;
+        } */
+
+        DBManager.close(resultSet, preparedStatement, connection);
+        //if (double ==) throw new Exception("No goals found for user with this id");
+        return goalsInProgress;
+    }
+
     public void deleteGoal(Goal goal) throws SQLException{
         connection = DBManager.getConnection();
 
