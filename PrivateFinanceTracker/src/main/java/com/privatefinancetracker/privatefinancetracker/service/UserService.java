@@ -15,7 +15,7 @@ import static com.privatefinancetracker.privatefinancetracker.repository.DataMan
 public class UserService {
     private static Connection connection = DBManager.getConnection();
 
-    public void changePassword(int userId, String password) throws Exception{
+    public void changePassword(int userId, String password) throws Exception {
         connection = DBManager.getConnection();
 
         String query = "UPDATE user SET password = ? WHERE userId = ?";
@@ -28,7 +28,7 @@ public class UserService {
         connection.close();
     }
 
-    public void changeEmail(int userId, String email) throws Exception{
+    public void changeEmail(int userId, String email) throws Exception {
         connection = DBManager.getConnection();
 
         String query = "UPDATE user SET email = ? WHERE userId = ?";
@@ -130,7 +130,7 @@ public class UserService {
         return name;
     }
 
-    public void saveNewGoal(Goal goal) throws SQLException{
+    public void saveNewGoal(Goal goal) throws SQLException {
         connection = DBManager.getConnection();
 
         String query = "INSERT INTO financialGoalsCalculator (goalName, userId, description, amountToSave, startDate, endDate, amountSaved) VALUES (?,?,?,?,?,?,?)";
@@ -180,7 +180,7 @@ public class UserService {
 
     }
 
-    public void updateGoalProgress(int userId, double updatedAmount) throws Exception{
+    public void updateGoalProgress(int userId, double updatedAmount) throws Exception {
         connection = DBManager.getConnection();
 
         String query = "UPDATE financialGoalsCalculator SET amountSaved = ? WHERE userId = ?";
@@ -214,7 +214,7 @@ public class UserService {
         return goalsInProgress;
     }
 
-    public void deleteGoal(Goal goal) throws SQLException{
+    public void deleteGoal(Goal goal) throws SQLException {
         connection = DBManager.getConnection();
 
         String query = "DELETE FROM financialGoalsCalculator WHERE goalName = ?";
@@ -225,7 +225,7 @@ public class UserService {
         preparedStatement.close();
     }
 
-    public void deleteUserProfile(User user) throws SQLException{
+    public void deleteUserProfile(User user) throws SQLException {
         connection = DBManager.getConnection();
 
         String query = "DELETE FROM user WHERE userId = ?";
@@ -236,7 +236,7 @@ public class UserService {
         preparedStatement.close();
     }
 
-    public void saveDailyLimit(DailyLimit dailyLimit) throws SQLException{
+    public void saveDailyLimit(DailyLimit dailyLimit) throws SQLException {
         connection = DBManager.getConnection();
 
         String query = "INSERT INTO dailyLimit (userId, dailyLimitAmount) VALUES (?,?)";
@@ -250,7 +250,7 @@ public class UserService {
         preparedStatement.close();
     }
 
-    public void editDailyLimit(int userId, String newDailyLimit) throws Exception{
+    public void editDailyLimit(int userId, String newDailyLimit) throws Exception {
         connection = DBManager.getConnection();
 
         String query = "UPDATE dailyLimit SET dailyLimitAmount = ? WHERE userId = ?";
@@ -274,10 +274,11 @@ public class UserService {
 
         if (resultSet.next()) dailyLimitAmount = resultSet.getDouble("dailyLimitAmount");
         DBManager.close(resultSet, preparedStatement, connection);
-       // if (dailyLimitAmount == 0) throw new Exception("No users found with this id");
+        // if (dailyLimitAmount == 0) throw new Exception("No users found with this id");
         return dailyLimitAmount;
     }
-    public void saveTransactions(Transactions transaction) throws SQLException{
+
+    public void saveTransactions(Transactions transaction) throws SQLException {
         connection = DBManager.getConnection();
 
         String query = "INSERT INTO transactions (userId,amount,dateAndTimeOfTransaction,description,category) VALUES (?,?,?,?,?)";
@@ -294,15 +295,12 @@ public class UserService {
     }
 
 
-    public ResultSet populateTableFromDB(int userId,String category,LocalDate dateFrom, LocalDate dateTo) throws Exception {
+    public ResultSet populateTableFromDB(int userId, String category, LocalDate dateFrom, LocalDate dateTo) throws Exception {
         connection = DBManager.getConnection();
 
-        System.out.println("User ID:  " + userId);
         String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId =? and category =? and dateAndTimeOfTransaction BETWEEN ? and ?;";
-        //String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE category =?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        //preparedStatement.setString(1,category);
 
         preparedStatement.setInt(1, userId);
         preparedStatement.setString(2, category);
@@ -311,27 +309,6 @@ public class UserService {
 
         ResultSet rs = preparedStatement.executeQuery();
 
-       // ResultSet rs = query;
-
-        return rs;
-    }
-    public ResultSet populatePieChartFromDB(int userId,LocalDate dateFrom, LocalDate dateTo) throws Exception {
-        connection = DBManager.getConnection();
-
-        System.out.println("User ID:  " + userId);
-        String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE userId =? and dateAndTimeOfTransaction BETWEEN ? and ?;";
-        //String query = "SELECT amount, dateAndTimeOfTransaction, description, category FROM transactions WHERE category =?";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        //preparedStatement.setString(1,category);
-
-        preparedStatement.setInt(1, userId);
-        preparedStatement.setDate(2, Date.valueOf(dateFrom));
-        preparedStatement.setDate(3, Date.valueOf(dateTo));
-
-        ResultSet rs = preparedStatement.executeQuery();
-
-        // ResultSet rs = query;
 
         return rs;
     }

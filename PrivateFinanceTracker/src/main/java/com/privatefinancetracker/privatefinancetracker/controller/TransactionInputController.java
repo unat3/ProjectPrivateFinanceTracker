@@ -4,21 +4,13 @@ import com.privatefinancetracker.privatefinancetracker.model.TransactionsForTabl
 import com.privatefinancetracker.privatefinancetracker.model.TransactionsForTableList;
 import com.privatefinancetracker.privatefinancetracker.repository.DBManager;
 import com.privatefinancetracker.privatefinancetracker.repository.DataManager;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,11 +18,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class TransactionInputController extends ViewController implements Initializable {
 
-    // For the transaction input view
     @FXML
     private Label filePathLabel;
     @FXML
@@ -41,15 +35,15 @@ public class TransactionInputController extends ViewController implements Initia
     private TextField priceInput;
     @FXML
     private ChoiceBox currencyInput;
+
+
     String transactionInputFilePath;
 
-    TransactionsForTableList  transList = new TransactionsForTableList();
+    ObservableList<String> categoriesList;
+    TransactionsForTableList transList = new TransactionsForTableList();
+
     DBManager databaseManager;
     Connection conn;
-    ObservableList<String> categoriesList;
-
-    @FXML
-    private TableView<TransactionsForTable> tableView;
 
 
     public TransactionInputController() {
@@ -119,42 +113,46 @@ public class TransactionInputController extends ViewController implements Initia
         String line = "";
         String splitBy = ";";
         try {
-
+            //read the CSV file
             BufferedReader br = new BufferedReader(new FileReader(transactionInputFilePath));
             while ((line = br.readLine()) != null) {
                 int k = 0;
                 int Id = 0;
-                while ((line = br.readLine()) != null) { //šī daļa (29-32) ļauj izlaist pirmo rindu CSV failā
+                while ((line = br.readLine()) != null) {
                     if (k == 0) {
                         k++;
                         continue;
                     }
                     String[] transactionData = line.split(splitBy);
                     System.out.println("Date of payment: " + transactionData[1] + ", Currency: " + transactionData[2] + ", Sum: " + transactionData[3] + " Name: " + transactionData[4]);
-                    String date = transactionData[1];
+                    String datePreFormat = transactionData[1];
+                    //reformat the date
+                    Date date1 = new SimpleDateFormat("dd.MM.yyyy").parse(datePreFormat);
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                    String date = formatter.format(date1);
+
+
                     String currency = transactionData[2];
                     double price = Double.parseDouble(transactionData[3]);
                     String purchase = transactionData[4];
                     TransactionsForTable transaction = new TransactionsForTable(date, currency, price, purchase, categoriesList);
                     transList.addTransactionsForTable(transaction);
                     DataManager.setTransList(transList);
-                    System.out.println(transList.toString());
 
                 }
             }
 
             changeScene(actionEvent, "transactioncategories");
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
             System.out.println("Something went wrong in reading the CSV file, please try again");
         }
 
 
-
     }
 
     @FXML
-    private void doneButton2Pressed(ActionEvent actionEvent){
+    private void doneButton2Pressed(ActionEvent actionEvent) {
         try {
             changeScene(actionEvent, "transactioncategories");
         } catch (Exception ex) {
@@ -163,7 +161,7 @@ public class TransactionInputController extends ViewController implements Initia
     }
 
 
-    public void backToMainPage(ActionEvent actionEvent){
+    public void backToMainPage(ActionEvent actionEvent) {
         try {
             changeScene(actionEvent, "mainpage");
         } catch (Exception ex) {

@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+
 //this is the controller
 public class ReportsController extends ViewController implements Initializable {
 
@@ -59,7 +60,9 @@ public class ReportsController extends ViewController implements Initializable {
     DBManager databaseManager;
     Connection conn;
 
-    public ReportsController() {}
+    public ReportsController() {
+    }
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         databaseManager = new DBManager();
@@ -85,63 +88,45 @@ public class ReportsController extends ViewController implements Initializable {
             purchaseCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("purchase"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<ReportsData, String>("category"));
         }
-//pieChart
-       /* ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                        new PieChart.Data("Food", 2),
-                        new PieChart.Data("Housing", 25),
-                        new PieChart.Data("Transport", 50),
-                        new PieChart.Data("Savings", 3));
-
-
-        pieChartData.forEach(data ->
-                data.nameProperty().bind(
-                        Bindings.concat(
-                                data.getName(), " amount: ", data.pieValueProperty()
-                        )
-                )
-        );
-
-        pieChart.getData().addAll(pieChartData);
-    */
     }
+
     public void goButtonPressed() throws Exception {
-       LocalDate dateFrom = dateFromPicker.getValue();
-       LocalDate dateTo = dateToPicker.getValue();
-       String category = categoryPicker.getValue();
-        System.out.println(" I have correct input for DB: " + dateFrom + " " + dateTo + " " + category);
+        LocalDate dateFrom = dateFromPicker.getValue();
+        LocalDate dateTo = dateToPicker.getValue();
+        String category = categoryPicker.getValue();
 
         UserService userService = new UserService();
         int userID = DataManager.getLoggedInUserId();
-        System.out.println(userService.populateTableFromDB(userID,category,dateFrom,dateTo));
+        //getting data from database for the table:
+        ResultSet resultSet = userService.populateTableFromDB(userID, category, dateFrom, dateTo);
 
-            ResultSet resultSet = userService.populateTableFromDB(userID,category,dateFrom,dateTo);
-            System.out.println("I have results from DB: " + resultSet);
+        while (resultSet.next()) {
 
-            while (resultSet.next()) {
-                System.out.println("I am here in the while loop now");
-                 reportsDataList.addDataForTable(new ReportsData(resultSet.getDouble("amount"), resultSet.getDate("dateAndTimeOfTransaction"), resultSet.getString("description"), resultSet.getString("category")));
-                System.out.println("I have added something to the list");
-            }
-        System.out.println("I am here outside the while loop now");
-
-            DataManager.setReportsDataList(reportsDataList);
-            System.out.println("I have saved the list" + DataManager.getReportsDataList().getDataForTable());
-            reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
-            int length = DataManager.getReportsDataList().getDataForTable().size();
-            int index = 0;
-            double sum = 0;
-            while (index < length){
-                double tempSum = DataManager.getReportsDataList().getDataForTable().get(index).getPrice();
-                sum = sum + tempSum;
-                index ++;
-
-            }
-            spentSumText.setText("Total spendings/earnings between " + dateFrom + " and " + dateTo + " in category " + category + " : " + sum + "eur");
-        System.out.println(sum);
+            reportsDataList.addDataForTable(new ReportsData(resultSet.getDouble("amount"), resultSet.getDate("dateAndTimeOfTransaction"), resultSet.getString("description"), resultSet.getString("category")));
 
         }
-    public void backToMainPage(ActionEvent actionEvent){
+
+        DataManager.setReportsDataList(reportsDataList);
+        reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
+
+        // getting and setting the sum of the transactions in  a category:
+        int length = DataManager.getReportsDataList().getDataForTable().size();
+        int index = 0;
+        double sum = 0;
+        while (index < length) {
+            double tempSum = DataManager.getReportsDataList().getDataForTable().get(index).getPrice();
+            sum = sum + tempSum;
+            index++;
+
+            sum = GoalsCalculatorController.withTwoDecimalPlaces(sum);
+
+        }
+        spentSumText.setText("Total spendings/earnings between " + dateFrom + " and " + dateTo + " in category " + category + " : " + sum + "eur");
+        System.out.println(sum);
+
+    }
+
+    public void backToMainPage(ActionEvent actionEvent) {
         try {
             changeScene(actionEvent, "mainpage");
         } catch (Exception ex) {
@@ -149,18 +134,3 @@ public class ReportsController extends ViewController implements Initializable {
         }
     }
 }
-           // reportsTable.setItems(DataManager.getReportsDataList().getDataForTable());
-
-
-
-
-//reportsTable - tabula
-//categoryPicker - kategoriju izvelne
-//dateFromPicker - datuma no izvelne // onAction - dateFromPicked
-//dateToPicker - datuma lidz izvelne // onAction - dateToPicked
-//dateCol;
-//priceCol;
-//purchaseCol;
-//categoryCol;
-//spentSumText - text field for displaying sum
-//go button - onAction - goButtonPressed
